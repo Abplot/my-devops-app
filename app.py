@@ -4,22 +4,22 @@ import psycopg2
 app = Flask(__name__)
 
 def get_db_connection():
-conn = psycopg2.connect(
-host="localhost",
-database="devops_app",
-user="devops_user",
-password="password123"
-)
-return conn
+    conn = psycopg2.connect(
+        host="localhost",
+        database="devops_app",
+        user="devops_user",
+        password="password123"
+    )
+    return conn
 
 @app.route('/')
 def index():
-conn = get_db_connection()
-cursor = conn.cursor()
-cursor.execute('SELECT version();')
-db_version = cursor.fetchone()
-conn.close()
-return f"Connected to PostgreSQL! Database version: {db_version[0]}"
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT version();')
+    db_version = cursor.fetchone()
+    conn.close()
+    return f"Connected to PostgreSQL! Database version: {db_version[0]}"
 
 if __name__ == '__main__':
-app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=8080)
