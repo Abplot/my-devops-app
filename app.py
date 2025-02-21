@@ -7,7 +7,7 @@ def get_db_connection():
     conn = psycopg2.connect(
         host="172.17.0.1",
         database="devops_app",
-        user="postgres",
+        user="devops_user",
         password="password123"
     )
     return conn
