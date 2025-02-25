@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Сообщения</title>
+</head>
+<body>
+    <h1>Добавить сообщение</h1>
+    <form method="POST" action="/">
+        <textarea name="message" rows="4" cols="50" required></textarea><br>
+        <button type="submit">Отправить</button>
+    </form>
+
+    <h2>Все сообщения</h2>
+    {% for message in messages %}
+        <div style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
+            <p>{{ message.content }}</p>
+            <small>{{ message.created_at }}</small>
+        </div>
+    {% endfor %}
+</body>
+</html> 
