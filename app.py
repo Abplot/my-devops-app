@@ -6,11 +6,11 @@ app = Flask(__name__)
 
 def get_db_connection():
     conn = psycopg2.connect(
-        host="host.docker.internal",
+        host="localhost", #TODO: Make right ip
         database="devops_app",
         user="devops_user",
         password="password123",
-        port="5432"
+        port="15432" #TODO: Make right port 5432
     )
     return conn
 
@@ -51,5 +51,9 @@ def index():
     
     return render_template('index.html', messages=messages_list)
 
+@app.route('/health')
+def health():
+    return "OK"
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=9080) #TODO: Make right port 8080
