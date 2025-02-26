@@ -6,11 +6,11 @@ app = Flask(__name__)
 
 def get_db_connection():
     conn = psycopg2.connect(
-        host="localhost", #TODO: Make right ip
+        host="172.17.0.1",
         database="devops_app",
         user="devops_user",
         password="password123",
-        port="15432" #TODO: Make right port 5432
+        port="5432"
     )
     return conn
 
@@ -56,4 +56,4 @@ def health():
     return "OK"
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=9080) #TODO: Make right port 8080
+    app.run(host='0.0.0.0', port=8080)
